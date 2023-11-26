@@ -4,27 +4,26 @@ import WorkResponse from '../components/WorkResponse';
 import ActionButton from '../components/ActionButton';
 
 const ProjectPage: React.FC = () => {
-  // Example data to match the screenshot
   const projectData = {
-    name: 'Tony J. Riley',
-    email: 'tonyjriley@teleworm.us',
-    phone: '405-472-4756',
-    address: '4525 Sharon Lane',
-    jobDescription: 'Add a living room',
-    startDate: '07/23/2023',
-    scopeOfProject: 'Construction of living room'
+    name: 'Duro Roses',
+    email: 'duro@example.com',
+    phone: '123-456-7890',
+    address: '123 Main St, Anytown, AT 12345',
+    jobDescription: 'The scope of the project includes white residence which will involve both interior and exterior surfaces. The objectives is to revitalize and enhance the aesthetic appeal of your property, while also ensuring durability and longevity of the paintwork.'
   };
 
   const workResponseData = {
-    labor: 9000,
-    materials: 5000,
-    others: 2000,
-    markup: 900,
-    total: 17900
+    title: 'Change Order 1',
+    labor: 2800,
+    materials: 1500,
+    others: 500,
+    markup: 1000,
+    total: 5800,
+    totalMarkupPercentage: 20
   };
 
-  const handleActionClick = () => {
-    // Implement action functionality here
+  const handleActionClick = (action: string) => {
+    console.log(`${action} clicked`);
   };
 
   return (
@@ -32,9 +31,10 @@ const ProjectPage: React.FC = () => {
       <ProjectDetails {...projectData} />
       <WorkResponse {...workResponseData} />
       <div className='flex space-x-4 my-4'>
-        <ActionButton text='Edit Project Detail' onClick={handleActionClick} />
-        <ActionButton text='Revise Proposal' onClick={handleActionClick} />
-        <ActionButton text='Resend Proposal' onClick={handleActionClick} />
+        <ActionButton text='Cancel Project' onClick={() => handleActionClick('Cancel Project')} variant='secondary' />
+        <ActionButton text='Send Invoice' onClick={() => handleActionClick('Send Invoice')} variant='secondary' />
+        <ActionButton text='Edit Change Order' onClick={() => handleActionClick('Edit Change Order')} variant='secondary' />
+        <ActionButton text='Mark As Finished' onClick={() => handleActionClick('Mark As Finished')} variant='primary' />
       </div>
     </div>
   );
