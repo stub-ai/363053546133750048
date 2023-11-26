@@ -1,13 +1,22 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import React from 'react';
+import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
+import EstimateForm from '../components/EstimateForm';
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+const Home: React.FC = () => {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-    </main>
-  )
-}
+    <div className='flex h-screen bg-gray-100'>
+      <Sidebar active='estimates' />
+      <div className='flex-1 flex flex-col overflow-hidden'>
+        <Header />
+        <main className='flex-1 overflow-x-hidden overflow-y-auto bg-gray-200'>
+          <div className='container mx-auto px-6 py-8'>
+            <EstimateForm />
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
